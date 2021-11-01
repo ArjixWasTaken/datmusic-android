@@ -7,8 +7,8 @@ package tm.alashow.datmusic.ui.album
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Album
 import androidx.compose.runtime.Composable
@@ -65,9 +65,9 @@ private fun AlbumHeaderSubtitle(viewState: AlbumDetailViewState, onArtistClick: 
         val painter = rememberImagePainter(artist?.photo(CoverImageSize.SMALL), builder = ImageLoading.defaultConfig)
         CoverImage(painter, shape = CircleShape, size = 20.dp)
         Text(
-            artistName, style = MaterialTheme.typography.subtitle2,
+            artistName, style = MaterialTheme.typography.titleSmall,
             modifier = Modifier.simpleClickable(onClick = onArtistClick)
         )
     }
-    Text(albumSubtitle, style = MaterialTheme.typography.caption)
+    Text(albumSubtitle, style = MaterialTheme.typography.labelMedium)
 }

@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.VectorPainter
@@ -28,6 +28,7 @@ import tm.alashow.navigation.Navigator
 import tm.alashow.ui.adaptiveColor
 import tm.alashow.ui.components.CollapsingTopBar
 import tm.alashow.ui.components.fullScreenLoading
+import tm.alashow.ui.theme.AppTheme
 
 @Composable
 fun <DetailType> MediaDetail(
@@ -93,14 +94,14 @@ private fun <DetailType, T : MediaDetailViewState<DetailType>> MediaDetailConten
     val artwork = viewState.artwork(context)
     val adaptiveColor = adaptiveColor(
         artwork,
-        fallback = MaterialTheme.colors.background,
-        gradientEndColor = MaterialTheme.colors.background
+        fallback = MaterialTheme.colorScheme.background,
+        gradientEndColor = MaterialTheme.colorScheme.background
     )
     val adaptiveBackground = Modifier.background(adaptiveColor.gradient)
 
     // apply adaptive background to whole list only on light theme
     // because full list gradient doesn't look great on dark
-    val isLight = MaterialTheme.colors.isLight
+    val isLight = AppTheme.colors.isLight
     val listBackgroundMod = if (isLight) adaptiveBackground else Modifier
     val headerBackgroundMod = if (isLight) Modifier else adaptiveBackground
 

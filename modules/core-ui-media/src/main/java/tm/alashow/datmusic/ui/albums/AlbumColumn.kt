@@ -15,11 +15,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Album
 import androidx.compose.material.icons.filled.Explicit
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -77,14 +77,14 @@ fun AlbumColumn(
             verticalArrangement = Arrangement.spacedBy(2.dp),
             modifier = Modifier.width(imageSize)
         ) {
-            Text(album.title, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = loadingModifier, style = MaterialTheme.typography.body1)
+            Text(album.title, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = loadingModifier, style = MaterialTheme.typography.bodyMedium)
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                 Text(
                     album.artists.firstOrNull()?.name ?: "",
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     modifier = loadingModifier,
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.bodySmall
                 )
 
                 Row(
@@ -96,9 +96,9 @@ fun AlbumColumn(
                             painter = rememberVectorPainter(Icons.Filled.Explicit),
                             contentDescription = null,
                             modifier = Modifier.size(16.dp),
-                            tint = MaterialTheme.colors.onBackground.copy(alpha = ContentAlpha.medium),
+                            tint = MaterialTheme.colorScheme.onBackground.copy(alpha = ContentAlpha.medium),
                         )
-                    Text(album.year.toString(), modifier = loadingModifier, style = MaterialTheme.typography.body2)
+                    Text(album.year.toString(), modifier = loadingModifier, style = MaterialTheme.typography.bodySmall)
                 }
             }
         }

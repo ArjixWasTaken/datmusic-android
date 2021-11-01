@@ -10,19 +10,19 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -72,14 +72,14 @@ fun <T> SelectableDropdownMenu(
                     Column {
                         Text(
                             text = labelMapper(item),
-                            color = if (selectedItem == item) MaterialTheme.colors.secondary else MaterialTheme.colors.onBackground
+                            color = if (selectedItem == item) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.onBackground
                         )
 
                         if (subtitles != null) {
                             val subtitle = subtitles[index]
                             if (subtitle != null)
                                 CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                                    Text(text = subtitle, style = MaterialTheme.typography.caption)
+                                    Text(text = subtitle, style = MaterialTheme.typography.labelMedium)
                                 }
                         }
                     }

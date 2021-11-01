@@ -17,10 +17,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.material.contentColorFor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Download
@@ -31,6 +29,8 @@ import androidx.compose.material.icons.outlined.Download
 import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -146,7 +146,7 @@ internal fun HomeBottomNavigation(
     Surface(
         elevation = surfaceElevation,
         color = surfaceColor,
-        contentColor = contentColorFor(MaterialTheme.colors.surface),
+        contentColor = contentColorFor(MaterialTheme.colorScheme.surface),
         modifier = modifier.then(surfaceMod)
     ) {
         Row(
@@ -193,7 +193,7 @@ internal fun HomeBottomNavigation(
 }
 
 @Composable
-private fun homeBottomNavigationGradient(color: Color = MaterialTheme.colors.surface) = Brush.verticalGradient(
+private fun homeBottomNavigationGradient(color: Color = MaterialTheme.colorScheme.surface) = Brush.verticalGradient(
     listOf(
         color.copy(0.8f),
         color.copy(0.9f),
@@ -230,7 +230,7 @@ private fun RowScope.HomeBottomNavigationItem(
         label = { Text(label) },
         selected = selected,
         onClick = onClick,
-        selectedContentColor = MaterialTheme.colors.secondary,
-        unselectedContentColor = MaterialTheme.colors.onSurface,
+        selectedContentColor = MaterialTheme.colorScheme.secondary,
+        unselectedContentColor = MaterialTheme.colorScheme.onSurface,
     )
 }

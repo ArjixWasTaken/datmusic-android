@@ -10,10 +10,12 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.material.Colors
 import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.contentColorFor
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -55,8 +57,6 @@ internal val LightAppColors = appLightColors(Primary, Secondary, PrimaryVariant,
 fun appDarkColors(
     primary: Color,
     secondary: Color,
-    primaryVariant: Color = primary,
-    secondaryVariant: Color = secondary,
     background: Color = primary,
     surface: Color = primary,
     onPrimary: Color = Color.White,
@@ -65,24 +65,21 @@ fun appDarkColors(
     onSurfaceInputBackground: Color = Color(0x45706d86),
 ) = AppColors(
     _onSurfaceInputBackground = onSurfaceInputBackground,
-    _materialColors = darkColors(
+    _materialColors = darkColorScheme(
         primary = primary,
         onPrimary = onPrimary,
-        primaryVariant = primaryVariant,
         secondary = secondary,
         onSecondary = onSecondary,
-        secondaryVariant = secondaryVariant,
         background = background,
         surface = surface,
         onSurface = onSurface,
-    )
+    ),
+    _isLight = false,
 )
 
 fun appLightColors(
     primary: Color,
     secondary: Color,
-    primaryVariant: Color = primary,
-    secondaryVariant: Color = secondary,
     background: Color = Color.White,
     surface: Color = Color.White,
     onPrimary: Color = Color.White,
@@ -91,27 +88,26 @@ fun appLightColors(
     onSurfaceInputBackground: Color = Color(0x45c1bbc0),
 ) = AppColors(
     _onSurfaceInputBackground = onSurfaceInputBackground,
-    _materialColors = lightColors(
+    _materialColors = lightColorScheme(
         primary = primary,
         onPrimary = onPrimary,
-        primaryVariant = primaryVariant,
         secondary = secondary,
         onSecondary = onSecondary,
-        secondaryVariant = secondaryVariant,
         background = background,
         surface = surface,
         onSurface = onSurface,
-    )
+    ),
+    _isLight = true,
 )
 
 @Composable
-fun Colors.plainSurfaceColor() = if (MaterialTheme.colors.isLight) Color.White else Color.Black
+fun AppColors.plainSurfaceColor() = if (isLight) Color.White else Color.Black
 
 @Composable
-fun Colors.plainBackgroundColor() = if (!MaterialTheme.colors.isLight) Color.White else Color.Black
+fun AppColors.plainBackgroundColor() = if (!isLight) Color.White else Color.Black
 
 @Composable
-fun Colors.plainGrayBackground() = if (MaterialTheme.colors.isLight) Color.LightGray else Color.DarkGray
+fun AppColors.plainGrayBackground() = if (isLight) Color.LightGray else Color.DarkGray
 
 @Composable
 fun Color.disabledAlpha(condition: Boolean): Color = copy(alpha = if (condition) alpha else ContentAlpha.disabled)
@@ -144,7 +140,7 @@ internal fun animate(colors: Colors): Colors {
 }
 
 @Composable
-fun translucentSurfaceColor() = MaterialTheme.colors.surface.copy(alpha = AppBarAlphas.translucentBarAlpha())
+fun translucentSurfaceColor() = MaterialTheme.colorScheme.surface.copy(alpha = AppBarAlphas.translucentBarAlpha())
 
 fun Modifier.translucentSurface() = composed { background(translucentSurfaceColor()) }
 

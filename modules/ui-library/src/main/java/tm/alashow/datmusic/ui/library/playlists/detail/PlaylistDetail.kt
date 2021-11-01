@@ -4,8 +4,8 @@
  */
 package tm.alashow.datmusic.ui.library.playlists.detail
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -50,7 +50,7 @@ private fun PlaylistHeaderSubtitle(viewState: PlaylistDetailViewState) {
     if (!viewState.isEmpty) {
         val resources = LocalContext.current.resources
         viewState.audiosCountDuration?.let {
-            Text(it.localize(resources), style = MaterialTheme.typography.subtitle2)
+            Text(it.localize(resources), style = MaterialTheme.typography.titleSmall)
         }
     }
 }

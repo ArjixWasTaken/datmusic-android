@@ -35,4 +35,4 @@ private val APP_FONT = FontFamily(
     )
 )
 
-val Typography = Typography(defaultFontFamily = APP_FONT)
+val Typography = androidx.compose.material3.Typography()

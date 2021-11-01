@@ -18,13 +18,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.ButtonDefaults.textButtonColors
+import androidx.compose.material3.ButtonDefaults.textButtonColors
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Delete
@@ -104,7 +104,7 @@ fun EditPlaylist(
                 state = reorderableState.listState,
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colors.background)
+                    .background(MaterialTheme.colorScheme.background)
                     .reorderable(
                         state = reorderableState,
                         onMove = { from, to -> viewModel.movePlaylistItem(from.index - itemsBeforeContent, to.index - itemsBeforeContent) },
@@ -184,7 +184,7 @@ private fun LazyListScope.editPlaylistHeader(
         ) {
             Text(
                 text = stringResource(R.string.playlist_edit_label),
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.titleSmall,
                 textAlign = TextAlign.Center,
             )
 
@@ -269,7 +269,7 @@ private fun LazyListScope.editPlaylistExtraActions(
             }
             TextButton(
                 onClick = onDelete,
-                colors = textButtonColors(contentColor = MaterialTheme.colors.error),
+                colors = textButtonColors(contentColor = MaterialTheme.colorScheme.error),
             ) {
                 Icon(Icons.Default.Delete, contentDescription = null, modifier = Modifier.textIconModifier())
                 Text(stringResource(R.string.playlist_edit_delete))

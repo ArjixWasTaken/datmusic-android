@@ -8,10 +8,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MusicNote
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -34,7 +34,7 @@ object CoverHeaderDefaults {
     val height = 300.dp
 
     val titleStyle
-        @Composable get() = MaterialTheme.typography.h5.copy(
+        @Composable get() = MaterialTheme.typography.headlineSmall.copy(
             fontWeight = FontWeight.Black
         )
 }

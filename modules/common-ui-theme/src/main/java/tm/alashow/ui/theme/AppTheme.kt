@@ -7,7 +7,8 @@ package tm.alashow.ui.theme
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material.Colors
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Stable
@@ -63,16 +64,20 @@ fun ProvideAppTheme(
 @Stable
 data class AppColors(
     private val _onSurfaceInputBackground: Color,
-    private val _materialColors: Colors,
+    private val _materialColors: ColorScheme,
+    private val _isLight: Boolean,
 ) {
     var onSurfaceInputBackground by mutableStateOf(_onSurfaceInputBackground)
         private set
     var materialColors by mutableStateOf(_materialColors)
         private set
+    var isLight by mutableStateOf(_isLight)
+        private set
 
     fun update(other: AppColors) {
         onSurfaceInputBackground = other.onSurfaceInputBackground
         materialColors = other.materialColors
+        isLight = other.isLight
     }
 }
 
@@ -80,8 +85,8 @@ data class AppColors(
 fun MaterialThemePatches(content: @Composable () -> Unit) {
     // change selection color from primary to secondary
     val textSelectionColors = TextSelectionColors(
-        handleColor = MaterialTheme.colors.secondary,
-        backgroundColor = MaterialTheme.colors.secondary.copy(alpha = 0.4f)
+        handleColor = MaterialTheme.colorScheme.secondary,
+        backgroundColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.4f)
     )
     CompositionLocalProvider(LocalTextSelectionColors provides textSelectionColors, content = content)
 }

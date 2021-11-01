@@ -52,6 +52,7 @@ object Deps {
             const val uiTooling = "androidx.compose.ui:ui-tooling:$version"
             const val foundation = "androidx.compose.foundation:foundation:$version"
             const val materialDesign = "androidx.compose.material:material:$version"
+            const val materialDesign3 = "androidx.compose.material3:material3:1.0.0-alpha01"
             const val materialDesignIcons = "androidx.compose.material:material-icons-core:$version"
             const val materialDesignIconsExtended = "androidx.compose.material:material-icons-extended:$version"
             const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc01"

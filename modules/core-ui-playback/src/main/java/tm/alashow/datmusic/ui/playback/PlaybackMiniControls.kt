@@ -26,15 +26,16 @@ import androidx.compose.material.Icon
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme as M2
 import androidx.compose.material.ProgressIndicatorDefaults
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.compose.material.icons.filled.HourglassBottom
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
@@ -116,14 +117,14 @@ fun PlaybackMiniControls(
         navigator.navigate(LeafScreen.PlaybackSheet().createRoute())
     }
 
-    val adaptiveColor = adaptiveColor(nowPlaying.artwork, initial = MaterialTheme.colors.background)
+    val adaptiveColor = adaptiveColor(nowPlaying.artwork, initial = MaterialTheme.colorScheme.background)
     val backgroundColor = adaptiveColor.color
     val contentColor = adaptiveColor.contentColor
 
     Dismissable(onDismiss = { playbackConnection.transportControls?.stop() }) {
         Surface(
             color = Color.Transparent,
-            shape = MaterialTheme.shapes.small,
+            shape = M2.shapes.small,
             modifier = modifier
                 .padding(horizontal = AppTheme.specs.paddingSmall)
                 .clickable { expand() }
@@ -144,7 +145,7 @@ fun PlaybackMiniControls(
                 }
                 PlaybackProgress(
                     playbackState = playbackState,
-                    color = MaterialTheme.colors.onBackground
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             }
         }
@@ -215,14 +216,14 @@ private fun PlaybackNowPlaying(audio: Audio, modifier: Modifier = Modifier) {
             audio.title.orNA(),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Bold)
+            style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold)
         )
         CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
             Text(
                 audio.artist.orNA(),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.body2
+                style = MaterialTheme.typography.bodySmall
             )
         }
     }

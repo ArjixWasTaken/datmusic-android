@@ -12,7 +12,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -39,6 +39,7 @@ import kotlin.math.sqrt
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import tm.alashow.base.imageloading.getBitmap
+import tm.alashow.ui.theme.AppTheme
 import tm.alashow.ui.theme.contrastComposite
 import tm.alashow.ui.theme.toColor
 
@@ -49,9 +50,9 @@ data class AdaptiveColorResult(val color: Color, val contentColor: Color, val gr
 @Composable
 fun adaptiveColor(
     imageData: Any?,
-    fallback: Color = MaterialTheme.colors.secondary.contrastComposite(),
+    fallback: Color = MaterialTheme.colorScheme.secondary.contrastComposite(),
     animationSpec: AnimationSpec<Color> = ADAPTIVE_COLOR_ANIMATION,
-    gradientEndColor: Color = if (MaterialTheme.colors.isLight) Color.White else Color.Black,
+    gradientEndColor: Color = if (AppTheme.colors.isLight) Color.White else Color.Black,
 ): AdaptiveColorResult {
     val context = LocalContext.current
 
@@ -76,10 +77,10 @@ fun adaptiveColor(
 @Composable
 fun adaptiveColor(
     image: Bitmap? = null,
-    fallback: Color = MaterialTheme.colors.secondary.contrastComposite(),
+    fallback: Color = MaterialTheme.colorScheme.secondary.contrastComposite(),
     initial: Color = fallback,
     animationSpec: AnimationSpec<Color> = ADAPTIVE_COLOR_ANIMATION,
-    gradientEndColor: Color = if (MaterialTheme.colors.isLight) Color.White else Color.Black,
+    gradientEndColor: Color = if (AppTheme.colors.isLight) Color.White else Color.Black,
 ): AdaptiveColorResult {
     var accent by remember { mutableStateOf(initial) }
     val accentAnimated by animateColorAsState(accent, animationSpec)
@@ -94,7 +95,7 @@ fun adaptiveColor(
         }
     }
 
-    val isDarkColors = !MaterialTheme.colors.isLight
+    val isDarkColors = !AppTheme.colors.isLight
 
     LaunchedEffect(image, fallback, isDarkColors) {
         if (image != null)
@@ -113,7 +114,7 @@ fun backgroundGradient(
     accent: Color,
     endColor: Color,
 ): Brush {
-    val isDark = !MaterialTheme.colors.isLight
+    val isDark = !AppTheme.colors.isLight
     val first = gradientShift(isDark, accent.toArgb(), 0.4f, 100)
     val second = gradientShift(isDark, accent.toArgb(), 0.26f, 66)
     val third = gradientShift(isDark, accent.toArgb(), 0.13f, 33)

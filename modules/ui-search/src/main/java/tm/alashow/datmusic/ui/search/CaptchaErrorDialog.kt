@@ -17,10 +17,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme as M2
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
@@ -77,7 +78,7 @@ internal fun CaptchaErrorDialog(
             val image = rememberImagePainter(imageUri, builder = ImageLoading.defaultConfig)
 
             Surface(
-                shape = MaterialTheme.shapes.medium,
+                shape = M2.shapes.medium,
                 elevation = 2.dp,
             ) {
                 Column(
@@ -89,7 +90,7 @@ internal fun CaptchaErrorDialog(
                 ) {
                     Text(
                         text = stringResource(R.string.captcha_title),
-                        style = MaterialTheme.typography.h6,
+                        style = MaterialTheme.typography.titleSmall,
                         modifier = Modifier.align(Alignment.Start)
                     )
 
@@ -100,8 +101,8 @@ internal fun CaptchaErrorDialog(
                         onValueChange = { if (it.text.length <= MAX_KEY_LENGTH) setCaptchaKey(it) },
                         singleLine = true,
                         maxLines = 1,
-                        placeholder = { Text(stringResource(R.string.captcha_hint), style = MaterialTheme.typography.body1.copy(fontSize = 14.sp)) },
-                        textStyle = MaterialTheme.typography.body1.copy(fontSize = 14.sp),
+                        placeholder = { Text(stringResource(R.string.captcha_hint), style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp)) },
+                        textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
                         colors = outlinedTextFieldColors(),
                         modifier = Modifier.height(50.dp)
                     )
@@ -135,7 +136,7 @@ private fun CaptchaErrorImage(
             modifier = Modifier
                 .padding(vertical = AppTheme.specs.paddingLarge)
                 .width(130.dp)
-                .clip(MaterialTheme.shapes.small)
+                .clip(M2.shapes.small)
                 .aspectRatio(130f / 50f) // source captcha original ratio
                 .align(Alignment.Center)
                 .placeholder(
@@ -153,7 +154,7 @@ private fun CaptchaErrorImage(
                 .align(Alignment.CenterEnd)
         ) {
             Icon(
-                tint = MaterialTheme.colors.secondary,
+                tint = MaterialTheme.colorScheme.secondary,
                 imageVector = Icons.Default.Refresh,
                 contentDescription = stringResource(R.string.captcha_reload)
             )

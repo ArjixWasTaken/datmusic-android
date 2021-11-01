@@ -33,10 +33,8 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -50,6 +48,8 @@ import androidx.compose.material.icons.filled.ShuffleOn
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
@@ -286,12 +286,12 @@ private fun PlaybackSheetTopBarTitle(
         val queueTitle = playbackQueue.title.asQueueTitle()
         Text(
             text = queueTitle.localizeType(context.resources).uppercase(),
-            style = MaterialTheme.typography.overline.copy(fontWeight = FontWeight.Light),
+            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Light),
             maxLines = 1,
         )
         Text(
             text = queueTitle.localizeValue(),
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
             overflow = TextOverflow.Ellipsis,
             maxLines = 2,
@@ -348,7 +348,7 @@ private fun PlaybackArtwork(
     CoverImage(
         painter = currentArtwork,
         shape = RectangleShape,
-        backgroundColor = MaterialTheme.colors.plainSurfaceColor(),
+        backgroundColor = AppTheme.colors.plainSurfaceColor(),
         contentColor = contentColor,
         bitmapPlaceholder = nowPlaying.artwork,
         modifier = Modifier
@@ -398,7 +398,7 @@ private fun PlaybackNowPlaying(
     val title = nowPlaying.title
     Text(
         title.orNA(),
-        style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Bold),
+        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
         overflow = TextOverflow.Ellipsis,
         maxLines = 1,
         modifier = Modifier.simpleClickable {
@@ -408,7 +408,7 @@ private fun PlaybackNowPlaying(
     CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
         Text(
             nowPlaying.artist.orNA(),
-            style = MaterialTheme.typography.subtitle1,
+            style = MaterialTheme.typography.titleSmall,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
             modifier = Modifier.simpleClickable {
@@ -535,8 +535,8 @@ private fun BoxScope.PlaybackProgressDuration(
                 true -> (progressState.total.toFloat() * (draggingProgress)).toLong().millisToDuration()
                 else -> progressState.currentDuration
             }
-            Text(currentDuration, style = MaterialTheme.typography.caption)
-            Text(progressState.totalDuration, style = MaterialTheme.typography.caption)
+            Text(currentDuration, style = MaterialTheme.typography.labelMedium)
+            Text(progressState.totalDuration, style = MaterialTheme.typography.labelMedium)
         }
     }
 }
@@ -662,12 +662,12 @@ private fun PlaybackAudioInfo(audio: Audio) {
                 .padding(bottom = AppTheme.specs.padding)
         ) {
             Surface(
-                color = MaterialTheme.colors.plainBackgroundColor().copy(alpha = 0.1f),
+                color = AppTheme.colors.plainBackgroundColor().copy(alpha = 0.1f),
                 shape = CircleShape,
             ) {
                 Text(
                     audiHeader.info(),
-                    style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Bold, fontSize = 10.sp),
+                    style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold, fontSize = 10.sp),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
                 )

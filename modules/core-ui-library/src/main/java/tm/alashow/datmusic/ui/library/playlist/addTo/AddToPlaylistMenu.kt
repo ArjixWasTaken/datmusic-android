@@ -12,8 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -90,7 +90,7 @@ private fun AddToPlaylistDropdownMenu(
         ) {
             Text(
                 if (multiple) stringResource(R.string.playlist_addTo_multiple) else stringResource(R.string.playlist_addTo),
-                style = MaterialTheme.typography.caption.copy(color = MaterialTheme.colors.secondary),
+                style = MaterialTheme.typography.labelMedium.copy(color = MaterialTheme.colorScheme.secondary),
                 modifier = Modifier.padding(AppTheme.specs.inputPaddings)
             )
             playlists.forEach { item ->

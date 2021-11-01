@@ -12,10 +12,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme as M2
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MusicNote
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,9 +43,9 @@ fun CoverImage(
     imageModifier: Modifier = Modifier,
     size: Dp = Dp.Unspecified,
     backgroundColor: Color = PlaceholderDefaults.color(),
-    contentColor: Color = MaterialTheme.colors.secondary,
+    contentColor: Color = MaterialTheme.colorScheme.secondary,
     contentScale: ContentScale = ContentScale.Crop,
-    shape: Shape = MaterialTheme.shapes.small,
+    shape: Shape = M2.shapes.small,
     icon: VectorPainter = rememberVectorPainter(Icons.Default.MusicNote),
     iconPadding: Dp = if (size != Dp.Unspecified) size * 0.25f else 24.dp,
     bitmapPlaceholder: Bitmap? = null,

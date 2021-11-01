@@ -14,9 +14,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.MaterialTheme as M2
 import androidx.compose.material.contentColorFor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,7 +40,7 @@ fun AppButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = RoundedCornerShape(percent = 50),
-    backgroundColor: Color = MaterialTheme.colors.secondary,
+    backgroundColor: Color = MaterialTheme.colorScheme.secondary,
     contentColor: Color = contentColorFor(backgroundColor),
     content: @Composable RowScope.() -> Unit,
 ) {
@@ -61,7 +62,7 @@ fun TextRoundedButton(
     onClick: () -> Unit,
     text: String,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = MaterialTheme.typography.button,
+    textStyle: TextStyle = M2.typography.button,
     enabled: Boolean = true,
 ) {
     AppButton(onClick = onClick, modifier = modifier, enabled = enabled) {
@@ -106,7 +107,7 @@ fun RectangleButtonPreview() {
 
 @Composable
 fun ThemeShapeButtonPreview() {
-    AppButton(onClick = {}, shape = MaterialTheme.shapes.small) {
+    AppButton(onClick = {}, shape = M2.shapes.small) {
         Text("Action", fontSize = 8.sp)
     }
 }
