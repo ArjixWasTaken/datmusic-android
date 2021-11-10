@@ -51,8 +51,8 @@ val BlueGrey = Color(0xFF263238)
 val Green600 = Color(0xFF1DB954)
 val Green900 = Color(0xFF468847)
 
-internal val DarkAppColors = appDarkColors(Primary, Secondary, PrimaryVariant, SecondaryVariant)
-internal val LightAppColors = appLightColors(Primary, Secondary, PrimaryVariant, SecondaryVariant)
+internal val DarkAppColors = appDarkColors(Primary, Secondary)
+internal val LightAppColors = appLightColors(Primary, Secondary)
 
 fun appDarkColors(
     primary: Color,

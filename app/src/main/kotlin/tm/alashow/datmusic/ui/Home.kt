@@ -16,9 +16,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Surface
 import androidx.compose.material.contentColorFor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Download
@@ -29,7 +26,10 @@ import androidx.compose.material.icons.outlined.Download
 import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ScaffoldState
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -84,7 +84,7 @@ internal fun Home(
     val sysNavBarHeight = with(LocalDensity.current) { LocalWindowInsets.current.navigationBars.bottom.toDp() }
     val bottomBarHeight = sysNavBarHeight + bottomNavigationHeight + (if (playerActive) PlaybackMiniControlsDefaults.height else 0.dp)
 
-    Scaffold(
+    androidx.compose.material3.Scaffold(
         scaffoldState = scaffoldState,
         snackbarHost = { DismissableSnackbarHost(it) },
         bottomBar = {
@@ -144,7 +144,7 @@ internal fun HomeBottomNavigation(
     val surfaceMod = if (playerActive) Modifier.background(homeBottomNavigationGradient()) else Modifier
 
     Surface(
-        elevation = surfaceElevation,
+        tonalElevation = surfaceElevation,
         color = surfaceColor,
         contentColor = contentColorFor(MaterialTheme.colorScheme.surface),
         modifier = modifier.then(surfaceMod)

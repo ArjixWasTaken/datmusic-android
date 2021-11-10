@@ -11,13 +11,13 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.google.accompanist.insets.ui.Scaffold
 import tm.alashow.common.compose.rememberFlowWithLifecycle
 import tm.alashow.datmusic.domain.entities.AudioDownloadItem
 import tm.alashow.datmusic.downloader.DownloadItems
@@ -39,7 +39,7 @@ private fun Downloads(viewModel: DownloadsViewModel) {
     val listState = rememberLazyListState()
     val asyncDownloads by rememberFlowWithLifecycle(viewModel.downloadRequests).collectAsState(Uninitialized)
 
-    androidx.compose.material3.Scaffold(
+    Scaffold(
         topBar = {
             AppTopBar(title = stringResource(R.string.downloads_title))
         },
